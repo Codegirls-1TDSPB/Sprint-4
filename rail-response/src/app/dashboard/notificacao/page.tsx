@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Cabecalho/Header";
 import Footer from "@/components/Rodape/Footer";
-import NotificacaoForm from "./NotificacaoForm";
+import NotificacaoForm from "./notificacaoform";
 
 export default function NotificacaoPage() {
   const router = useRouter();
