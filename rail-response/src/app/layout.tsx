@@ -1,30 +1,17 @@
-// app/layout.tsx ou src/layout.tsx
-import React from 'react'
+import './globals.css';
+import { ReactNode } from 'react';
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+export const metadata = {
+  title: 'RailResponse',
+  description: 'Sistema de resposta para ferrovias',
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <>
-      {/* Definindo a tag <html> */}
-      <html lang="pt-BR">
-        <head>
-          <meta charSet="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Meu App</title>
-          {/* Aqui você pode adicionar links para fontes, favicon, etc. */}
-        </head>
-        <body>
-          {/* Corpo do layout */}
-          <header>
-            {/* Seu cabeçalho */}
-          </header>
-          <main>{children}</main>
-          <footer>
-            {/* Seu rodapé */}
-          </footer>
-        </body>
-      </html>
-    </>
-  )
+    <html lang="pt-br">
+      <body className="bg-[#1b4263] min-h-screen">
+        {children}
+      </body>
+    </html>
+  );
 }
-
-export default Layout
