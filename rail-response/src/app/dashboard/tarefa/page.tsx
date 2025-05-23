@@ -21,7 +21,7 @@ export default function PainelTarefas() {
     setLoading(true);
     setErro('');
     try {
-      const res = await fetch('/api/tarefaS');
+      const res = await fetch('/api/tarefas');
       if (!res.ok) throw new Error('Erro ao carregar tarefas');
       const data = await res.json();
       setTarefas(data);
