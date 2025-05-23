@@ -6,26 +6,38 @@ import Header from '@/components/Cabecalho/Header';
 import Footer from '@/components/Rodape/Footer';
 import { Alerta } from './types';
 
+
 const AlertasPage: React.FC = () => {
   const [alertas, setAlertas] = useState<Alerta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchAlertas = async () => {
-      try {
-        const res = await fetch('/api/alerts');
-        if (!res.ok) throw new Error('Erro ao carregar os alertas.');
-        const data = await res.json();
-        setAlertas(data);
-      } catch (err) {
-        setError((err as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchAlertas = async () => {
+    try {
+      const res = await fetch('https://python-api-railresponse.onrender.com/alertas', {
+        cache: 'no-store',
+      });
+      if (!res.ok) throw new Error('Erro ao carregar os alertas.');
+      const data = await res.json();
+      setAlertas(data);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchAlertas();
+  }, []);
+
+  // Atualiza a cada 10 segundos
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      fetchAlertas();
+    }, 10000);
+
+    return () => clearInterval(intervalo);
   }, []);
 
   if (loading) {
@@ -72,13 +84,13 @@ const AlertasPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {alertas.map((alert) => (
-                  <tr key={alert.id} className="border-t hover:bg-gray-50 transition">
+                {alertas.map((alert, index) => (
+                  <tr key={alert.id || index} className="border-t hover:bg-gray-50 transition">
                     <td className="py-3 px-4">{alert.id}</td>
-                    <td className="py-3 px-4">{alert.message}</td>
-                    <td className="py-3 px-4">{new Date(alert.date).toLocaleString()}</td>
-                    <td className={`py-3 px-4 font-semibold ${getSeverityColor(alert.severity)}`}>
-                      {alert.severity}
+                    <td className="py-3 px-4">{alert.mensagem}</td>
+                    <td className="py-3 px-4">{new Date(alert.hora).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })}</td>
+                    <td className={`py-3 px-4 font-semibold ${getSeverityColor(alert.prioridade)}`}>
+                      {alert.prioridade}
                     </td>
                   </tr>
                 ))}
@@ -92,13 +104,13 @@ const AlertasPage: React.FC = () => {
   );
 };
 
-const getSeverityColor = (severity: Alerta['severity']) => {
-  switch (severity) {
-    case 'Alto':
+const getSeverityColor = (prioridade: Alerta['prioridade']) => {
+  switch (prioridade) {
+    case 'Alta':
       return 'text-red-600';
-    case 'Médio':
+    case 'Média':
       return 'text-yellow-600';
-    case 'Baixo':
+    case 'Baixa':
       return 'text-green-600';
     default:
       return 'text-gray-600';

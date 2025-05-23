@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 // Listar todos os alertas
 export async function GET(req: NextRequest) {
   try {
-    const res = await fetch("http://localhost:8000/alertas");
+    const res = await fetch("https://python-api-railresponse.onrender.com/alertas");
 
     if (!res.ok) {
       const errorText = await res.text();
