@@ -51,7 +51,7 @@ export default function PainelTarefas() {
     } finally {
       setAtualizandoId(null);
     }
-  }
+  } 
 
   return (
     <div className="min-h-screen flex flex-col bg-[#112B3C] text-white">
