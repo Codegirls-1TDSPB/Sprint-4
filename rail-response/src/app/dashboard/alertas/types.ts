@@ -1,6 +1,8 @@
 export interface Alerta {
   id: number;
-  message: string;
+  mensagem: string;
   date: string;
+  hora: string;
+  prioridade: string;
   severity: 'Baixo' | 'Médio' | 'Alto';
 }
