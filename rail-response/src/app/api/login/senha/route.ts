@@ -5,7 +5,7 @@ export async function PUT(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const response = await fetch("http://localhost:8080/rail/login", {
+    const response = await fetch("https://quarkus-teste-production-5dc5.up.railway.app/rail/login", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

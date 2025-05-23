@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const res = await fetch(`http://localhost:8080/rail/tarefa/${params.id}`);
+    const res = await fetch(`https://quarkus-teste-production-5dc5.up.railway.app/rail/tarefa`);
     const data = await res.json();
     return NextResponse.json(data);
   } catch (error) {
@@ -23,7 +23,7 @@ export async function PUT(
   try {
     const body = await req.json();
 
-    const res = await fetch(`http://localhost:8080/rail/tarefa/${params.id}`, {
+    const res = await fetch(`https://quarkus-teste-production-5dc5.up.railway.app/rail/tarefa/${params.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const res = await fetch(`http://localhost:8080/rail/tarefa/${params.id}`, {
+    const res = await fetch(`https://quarkus-teste-production-5dc5.up.railway.app/rail/tarefa/${params.id}`, {
       method: "DELETE",
     });
 

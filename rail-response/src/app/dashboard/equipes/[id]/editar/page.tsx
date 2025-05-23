@@ -21,7 +21,7 @@ export default function EditarEquipe() {
   const [contatoResponsavel, setContatoResponsavel] = useState('');
 
   useEffect(() => {
-    fetch(`/api/equipe/${id}`)
+    fetch(`/api/equipes/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error('Erro ao buscar equipe');
         return res.json();
@@ -45,7 +45,7 @@ export default function EditarEquipe() {
     };
 
     try {
-      const res = await fetch(`/api/equipe/${id}`, {
+      const res = await fetch(`/api/equipes/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
