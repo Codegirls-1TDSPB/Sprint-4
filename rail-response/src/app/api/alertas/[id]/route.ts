@@ -7,7 +7,7 @@ export async function PUT(
 ) {
   try {
     const body = await req.json();
-    const res = await fetch(`http://localhost:8000/alertas/${params.id}`, {
+    const res = await fetch(`https://python-api-railresponse.onrender.com/alertas/${params.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -31,7 +31,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const res = await fetch(`http://localhost:8000/alertas/${params.id}`, {
+    const res = await fetch(`https://python-api-railresponse.onrender.com/alertas/${params.id}`, {
       method: "DELETE",
     });
 
