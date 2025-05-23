@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 // GET - Listar equipes
 export async function GET(req: NextRequest) {
   try {
-    const res = await fetch("http://localhost:8080/rail/equipe");
+    const res = await fetch("https://quarkus-teste-production-5dc5.up.railway.app/rail/equipe");
     const data = await res.json();
     return NextResponse.json(data);
   } catch (error) {
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const res = await fetch("http://localhost:8080/rail/equipe", {
+    const res = await fetch("https://quarkus-teste-production-5dc5.up.railway.app/rail/equipe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

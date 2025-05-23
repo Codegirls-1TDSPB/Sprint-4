@@ -5,7 +5,7 @@
 import { NextResponse } from 'next/server';
 
 //colocar o link da api hospedada - https://railway.com/
-const API_URL = 'http://localhost:8080/usuario';
+const API_URL = 'https://quarkus-teste-production-5dc5.up.railway.app/usuario';
 
 export async function GET(_: Request, { params }: { params: { id: string } }) {
   const res = await fetch(`${API_URL}/${params.id}`);

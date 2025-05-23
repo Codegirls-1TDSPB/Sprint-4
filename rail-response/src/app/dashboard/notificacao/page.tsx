@@ -4,20 +4,10 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Cabecalho/Header";
 import Footer from "@/components/Rodape/Footer";
-import NotificacaoForm from "./notificacaoform";
+import NotificacaoForm from "./NotificacaoForm";
 
 export default function NotificacaoPage() {
   const router = useRouter();
-
-  // 🔒 Proteção de rota (descomente e implemente sua lógica real)
-  /*
-  useEffect(() => {
-    const isAuthenticated = localStorage.getItem("token"); // ou use seu contexto de auth
-    if (!isAuthenticated) {
-      router.push("/login");
-    }
-  }, []);
-  */
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-gray-100 via-white to-gray-100 text-gray-800">

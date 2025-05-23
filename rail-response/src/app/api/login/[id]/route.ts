@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const response = await fetch(`http://localhost:8080/rail/login/${params.id}`);
+    const response = await fetch(`https://quarkus-teste-production-5dc5.up.railway.app/rail/login/${params.id}`);
     const data = await response.json();
 
     return NextResponse.json(data);
@@ -22,7 +22,7 @@ export async function PUT(
   try {
     const body = await req.json();
 
-    const response = await fetch(`http://localhost:8080/rail/login/${params.id}`, {
+    const response = await fetch(`https://quarkus-teste-production-5dc5.up.railway.app/rail/login/${params.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -40,7 +40,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const response = await fetch(`http://localhost:8080/rail/login/${params.id}`, {
+    const response = await fetch(`https://quarkus-teste-production-5dc5.up.railway.app/rail/login/${params.id}`, {
       method: "DELETE",
     });
 

@@ -2,6 +2,20 @@
 
 import { useState } from "react";
 
+function mapPrioridade(prioridade: string): number {
+  switch (prioridade.toLowerCase()) {
+    case 'alta':
+      return 1;
+    case 'média':
+    case 'media':
+      return 2;
+    case 'baixa':
+      return 3;
+    default:
+      return 0; 
+  }
+}
+
 export default function NotificacaoForm() {
   const [titulo, setTitulo] = useState("");
   const [mensagem, setMensagem] = useState("");
@@ -13,18 +27,19 @@ export default function NotificacaoForm() {
     e.preventDefault();
 
     const novaNotificacao = {
-      titulo,
-      mensagem,
-      contato,
-      categoria,
-      prioridade,
-      lido: false,
-      dataCriacao: new Date().toISOString(),
-      dataAtualizacao: new Date().toISOString(),
+      conteudo: mensagem,
+      contato: contato,
+      titulo: titulo,
+      tipo_alerta: categoria,
+      tipo_notificacao: "Admin",
+      operador: "rail",
+      estacao: "Estação Rail",
+      criticidade: mapPrioridade(prioridade),
+      prioridade: mapPrioridade(prioridade),
     };
 
     try {
-      const response = await fetch("http://localhost:8000/notificacao", {
+      const response = await fetch("/api/notificacao", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

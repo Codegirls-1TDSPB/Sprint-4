@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
     const url = new URL(req.url);
     const checkStrength = url.searchParams.get("checkStrength");
 
-    let endpoint = "http://localhost:8080/rail/login";
+    let endpoint = "https://quarkus-teste-production-5dc5.up.railway.app/rail/login";
     if (checkStrength) {
       // Se tiver query param para verificar força da senha
       endpoint += `?checkStrength=${encodeURIComponent(checkStrength)}`;
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    let endpoint = "http://localhost:8080/rail/login";
+    let endpoint = "https://quarkus-teste-production-5dc5.up.railway.app/rail/login";
 
     // Diferencia ação pelo campo 'action' no corpo do POST
     // "login" para realizar login

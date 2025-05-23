@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-// import withAuth from '@/hoc/withAuth'; // Proteção de rota comentada
 import Header from '@/components/Cabecalho/Header';
 import Footer from '@/components/Rodape/Footer';
 
@@ -144,5 +143,4 @@ function Usuarios() {
   );
 }
 
-// export default withAuth(Usuarios); // Proteção de rota comentada
 export default Usuarios;

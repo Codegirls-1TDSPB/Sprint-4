@@ -8,7 +8,6 @@ interface Usuario {
   id: string;
   nome: string;
   email: string;
-  // adicione mais campos que você tenha no usuário
 }
 
 const EditarUsuario: React.FC = () => {
@@ -22,14 +21,6 @@ const EditarUsuario: React.FC = () => {
   const [email, setEmail] = useState('');
 
   useEffect(() => {
-    // Proteção de rota (descomente para ativar)
-    /*
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.push('/login'); // Redireciona para login se não estiver autenticado
-      return;
-    }
-    */
   }, [router]);
 
   useEffect(() => {

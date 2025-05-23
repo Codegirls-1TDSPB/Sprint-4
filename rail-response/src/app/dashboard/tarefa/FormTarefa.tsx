@@ -20,7 +20,7 @@ export default function NovaEstacao() {
     }
 
     try {
-      const response = await fetch('/api/tarefa', {
+      const response = await fetch('/api/tarefas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nome, localizacao, status }),
@@ -32,7 +32,7 @@ export default function NovaEstacao() {
       }
 
       alert('Estação cadastrada com sucesso!');
-      router.push('/dashboard/estacoes'); // Ajuste essa rota conforme sua necessidade
+      router.push('/dashboard/estacoes'); 
     } catch (error: any) {
       setErro('Erro ao salvar estação: ' + error.message);
     }

@@ -6,8 +6,8 @@ import Footer from '@/components/Rodape/Footer';
 
 interface Tarefa {
   id: number;
-  nome: string;
-  localizacao: string;
+  titulo: string;
+  descricao: string;
   status: string;
 }
 
@@ -21,7 +21,7 @@ export default function PainelTarefas() {
     setLoading(true);
     setErro('');
     try {
-      const res = await fetch('/api/tarefa');
+      const res = await fetch('/api/tarefaS');
       if (!res.ok) throw new Error('Erro ao carregar tarefas');
       const data = await res.json();
       setTarefas(data);
@@ -39,7 +39,7 @@ export default function PainelTarefas() {
   async function atualizarStatus(id: number, status: string) {
     setAtualizandoId(id);
     try {
-      const res = await fetch(`/api/tarefa/${id}`, {
+      const res = await fetch(`/api/tarefas/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status }),
@@ -71,8 +71,8 @@ export default function PainelTarefas() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-gray-600">
-                    <th className="py-2 px-4">Nome</th>
-                    <th className="py-2 px-4">Localização</th>
+                    <th className="py-2 px-4">Titulo</th>
+                    <th className="py-2 px-4">Descrição</th>
                     <th className="py-2 px-4">Status</th>
                     <th className="py-2 px-4">Ações</th>
                   </tr>
@@ -80,8 +80,8 @@ export default function PainelTarefas() {
                 <tbody>
                   {tarefas.map((tarefa) => (
                     <tr key={tarefa.id} className="border-b border-gray-700 hover:bg-[#205375]">
-                      <td className="py-2 px-4">{tarefa.nome}</td>
-                      <td className="py-2 px-4">{tarefa.localizacao}</td>
+                      <td className="py-2 px-4">{tarefa.titulo}</td>
+                      <td className="py-2 px-4">{tarefa.descricao}</td>
                       <td className="py-2 px-4">
                         <select
                           value={tarefa.status}

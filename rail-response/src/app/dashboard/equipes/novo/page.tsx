@@ -30,7 +30,7 @@ export default function NovaEquipe() {
     };
 
     try {
-      const res = await fetch('/api/equipe', {
+      const res = await fetch('/api/equipes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

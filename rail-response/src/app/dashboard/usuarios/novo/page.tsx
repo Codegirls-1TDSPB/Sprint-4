@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-// import withAuth from '@/hoc/withAuth'; // Proteção de rota comentada
 import Header from '@/components/Cabecalho/Header';
 import Footer from '@/components/Rodape/Footer';
 
@@ -159,5 +158,3 @@ export default function NovoUsuario() {
     </div>
   );
 }
-
-// export default withAuth(NovoUsuario); // Proteção comentada
